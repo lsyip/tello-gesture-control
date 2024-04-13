@@ -89,7 +89,7 @@ def main():
     def tello_battery(tello):
         global battery_status
         try:
-            battery_status = tello.get_battery()[:-2]
+            battery_status = tello.get_battery()
         except:
             battery_status = -1
 
@@ -100,7 +100,7 @@ def main():
     number = -1
     battery_status = -1
 
-    tello.move_down(20)
+    #tello.move_down(20)
 
     while True:
         fps = cv_fps_calc.get()

@@ -11,6 +11,9 @@ import cv2 as cv
 import numpy as np
 import mediapipe as mp
 
+import sys
+sys.path.append('/Users/yaarrr/Documents/Villanova/git-clone/tello-gesture-control/')
+
 from utils import CvFpsCalc
 from model import KeyPointClassifier
 from model import PointHistoryClassifier
@@ -77,14 +80,14 @@ def main():
     point_history_classifier = PointHistoryClassifier()
 
     # Read labels ###########################################################
-    with open('../model/keypoint_classifier/keypoint_classifier_label.csv',
+    with open('./model/keypoint_classifier/keypoint_classifier_label.csv',
               encoding='utf-8-sig') as f:
         keypoint_classifier_labels = csv.reader(f)
         keypoint_classifier_labels = [
             row[0] for row in keypoint_classifier_labels
         ]
     with open(
-            '../model/point_history_classifier/point_history_classifier_label.csv',
+            './model/point_history_classifier/point_history_classifier_label.csv',
             encoding='utf-8-sig') as f:
         point_history_classifier_labels = csv.reader(f)
         point_history_classifier_labels = [

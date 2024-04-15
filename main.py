@@ -147,7 +147,7 @@ def main():
         threading.Thread(target=tello_control, args=(key, keyboard_controller, gesture_controller,)).start()
         threading.Thread(target=tello_battery, args=(tello,)).start()
 
-        debug_image = gesture_detector.draw_info(debug_image, fps, mode, number)
+        debug_image = gesture_detector.draw_info(debug_image, fps, mode, number) 
 
         # Battery status and image rendering
         cv.putText(debug_image, "Battery: {}".format(battery_status), (5, 720 - 5),

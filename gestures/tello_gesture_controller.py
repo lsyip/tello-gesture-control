@@ -17,6 +17,7 @@ class TelloGestureController:
         print("GESTURE", gesture_id)
 
         if not self._is_landing:
+            """
             if gesture_id == 0:  # Forward
                 self.forw_back_velocity = 30
             elif gesture_id == 1:  # STOP
@@ -40,7 +41,13 @@ class TelloGestureController:
                 self.left_right_velocity = 20
             elif gesture_id == 7: # RIGHT
                 self.left_right_velocity = -20
+            """
 
+            if gesture_id == 0:
+                self.tello.turn_motor_on()
+            elif gesture_id == 1:
+                self.tello.turn_motor_off()
+                
             elif gesture_id == -1:
                 self.forw_back_velocity = self.up_down_velocity = \
                     self.left_right_velocity = self.yaw_velocity = 0

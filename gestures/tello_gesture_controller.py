@@ -5,6 +5,7 @@ class TelloGestureController:
     def __init__(self, tello: Tello):
         self.tello = tello
         self._is_landing = False
+        self._is_flying = False
 
         # RC control velocities
         self.forw_back_velocity = 0
@@ -43,10 +44,24 @@ class TelloGestureController:
                 self.left_right_velocity = -20
             """
 
-            if gesture_id == 0:
-                self.tello.turn_motor_on()
-            elif gesture_id == 1:
-                self.tello.turn_motor_off()
+            if gesture_id == 0:  # TURN MOTOR ON
+                if (self._is_flying == False):
+                    self.tello.turn_motor_on()
+            elif gesture_id == 1: # TURN MOTOR OFF
+                if (self._is_flying == False):
+                    self.tello.turn_motor_off()
+
+            elif gesture_id == 2:  # TAKEOFF
+                if (self._is_flying == False):
+                    self.tello.takeoff()
+                    self._is_flying = True
+
+            elif gesture_id == 3:  # LAND
+                self._is_landing = True
+                self.forw_back_velocity = self.up_down_velocity = \
+                    self.left_right_velocity = self.yaw_velocity = 0
+                self.tello.land()
+                self._is_flying = False
                 
             elif gesture_id == -1:
                 self.forw_back_velocity = self.up_down_velocity = \

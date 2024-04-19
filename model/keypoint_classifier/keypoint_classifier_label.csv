@@ -1,8 +1,10 @@
-﻿Motor-on
-Motor-off
+﻿Forward / Motor-on
+Backward / Motor-off
 Takeoff
 Land
 Up
 Down
-Left
 Right
+Left
+CW
+CCW
